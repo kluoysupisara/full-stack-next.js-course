@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
  
 export const metadata: Metadata = {
-  title: 'Dashboard Page',
+  title: 'Dashboard',
 };
-export default function DashboardPage() {
+export default function DashboardtPage() {
   return (
     <div>
       <h1>Hello Page Dashboard</h1>

@@ -10,6 +10,9 @@ export default function Home() {
       <div>
         <Link href="/about">ไปที่หน้า About</Link>
       </div>
+      <div>
+        <Link href="/dashboard">ไปที่หน้า Dashboard</Link>
+      </div>
       <p className="header">Heelloo Next.js</p>
       <p>{ process.env.DB_PASSWORD }</p>
       <p>{ process.env.DB_USER }</p>

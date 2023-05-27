@@ -1,5 +1,7 @@
+import Providers from '@/components/Providers'
 import '../globals.css'
 import { Inter } from 'next/font/google'
+import DLayout from './components/DLayout'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,12 +16,12 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-        <div>
-        <h1>Dashboard Header</h1>
-        <hr />
-        {children}
-        <hr />
-        <h1>Dashborad Footer</h1>
-        </div>
+    <html lang="en">
+    <body>
+      <Providers>
+        <DLayout>{children}</DLayout>
+      </Providers>
+    </body>
+  </html>
   )
 }

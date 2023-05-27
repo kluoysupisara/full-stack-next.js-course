@@ -30,9 +30,34 @@ import {
     IconCoin,
     IconChevronDown,
   } from '@tabler/icons-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Container } from 'postcss';
   
   const useStyles = createStyles((theme) => ({
+    active: {
+      display: 'flex',
+      alignItems: 'center',
+      height: '100%',
+      paddingLeft: theme.spacing.md,
+      paddingRight: theme.spacing.md,
+      textDecoration: 'none',
+      color: theme.colorScheme === 'dark' ? theme.white : theme.black,
+      fontWeight: 500,
+      fontSize: theme.fontSizes.sm,
+  
+      [theme.fn.smallerThan('sm')]: {
+        height: rem(42),
+        display: 'flex',
+        alignItems: 'center',
+        width: '100%',
+      },
+  
+      ...theme.fn.hover({
+        backgroundColor: theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.colors.gray[0],
+      }),
+      backgroundColor: 'whiteSmoke'
+    },
     link: {
       display: 'flex',
       alignItems: 'center',
@@ -126,6 +151,7 @@ import { Container } from 'postcss';
   ];
   
   export function AppHeader() {
+    const pathname = usePathname();
     const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
     const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
     const { classes, theme } = useStyles();
@@ -155,9 +181,9 @@ import { Container } from 'postcss';
             <MantineLogo size={30} />
   
             <Group sx={{ height: '100%' }} spacing={0} className={classes.hiddenMobile}>
-              <a href="#" className={classes.link}>
+              <Link href="./" className={ pathname == "/" ? classes.active : classes.link}>
                 Home
-              </a>
+              </Link>
               <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
                 <HoverCard.Target>
                   <a href="#" className={classes.link}>
@@ -203,9 +229,9 @@ import { Container } from 'postcss';
                   </div>
                 </HoverCard.Dropdown>
               </HoverCard>
-              <a href="#" className={classes.link}>
-                Learn
-              </a>
+              <Link href="./about" className={ pathname == "/about" ? classes.active: classes.link} >
+                About us
+              </Link>
               <a href="#" className={classes.link}>
                 Academy
               </a>
@@ -232,9 +258,9 @@ import { Container } from 'postcss';
           <ScrollArea h={`calc(100vh - ${rem(60)})`} mx="-md">
             <Divider my="sm" color={theme.colorScheme === 'dark' ? 'dark.5' : 'gray.1'} />
   
-            <a href="#" className={classes.link}>
+            <Link href="./" className={classes.link} onClick={toggleDrawer}>
               Home
-            </a>
+            </Link>
             <UnstyledButton className={classes.link} onClick={toggleLinks}>
               <Center inline>
                 <Box component="span" mr={5}>
@@ -244,9 +270,9 @@ import { Container } from 'postcss';
               </Center>
             </UnstyledButton>
             <Collapse in={linksOpened}>{links}</Collapse>
-            <a href="#" className={classes.link}>
-              Learn
-            </a>
+            <Link href="./about" className={classes.link} onClick={toggleDrawer}>
+              About us
+            </Link>
             <a href="#" className={classes.link}>
               Academy
             </a>

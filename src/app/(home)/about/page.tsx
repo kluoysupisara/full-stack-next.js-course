@@ -15,13 +15,13 @@ async function getData() {
   // const res = await fetch("https://api.codingthailand.com/api/version",
   // { cache: 'no-store'}) //auto update
 
-  // if(!res.ok) {
-  //   throw new Error("ไม่สามารถดึงข้อมูลได้")
-  // }
-  // return res.json();
-  if( res.status == 404) {
-    notFound();
+  if(!res.ok) {
+    throw new Error("ไม่สามารถดึงข้อมูลได้")
   }
+  return res.json();
+  // if( res.status == 404) {
+  //   notFound();
+  // }
 }
 export default async function AboutPage() {
   const data = await getData();

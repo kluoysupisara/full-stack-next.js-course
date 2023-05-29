@@ -232,9 +232,10 @@ import { Container } from 'postcss';
               <Link href="./about" className={ pathname == "/about" ? classes.active: classes.link} >
                 About us
               </Link>
-              <a href="#" className={classes.link}>
-                Academy
-              </a>
+              <Link href="./newstype" className={ pathname == "/newstype" ? classes.active: classes.link} prefetch={ false }>
+                ประเภทข่าว
+              </Link>
+              
             </Group>
   
             <Group className={classes.hiddenMobile}>
